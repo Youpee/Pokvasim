@@ -17,7 +17,7 @@ class AnonEditMessage:
             if (not updates):
                 break
 
-            if ("channel_post" in updates and self.check_ignore_id()):
+            if ("channel_post" in updates and self.check_ignore_id(updates)):
                 if ("/e" in updates["channel_post"]["text"] and "reply_to_message" in updates["channel_post"]):
                     textList = updates["channel_post"]["text"].split()
                     if (len(textList) > 1):
