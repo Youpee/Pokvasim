@@ -28,10 +28,15 @@ class AnonEditMessage:
                         self.deleteMessage(
                             self.idanonkvas, updates["channel_post"]["message_id"])
 
-                        self.msgid_ignore = updates["channel_post"]["message_id"]
                     else:
                         self.deleteMessage(
                             self.idanonkvas, updates["channel_post"]["message_id"])
+                elif ("/d" in updates["channel_post"]["text"] and "reply_to_message" in updates["channel_post"]):
+                    self.deleteMessage(
+                        self.idanonkvas, updates["channel_post"]["message_id"])
+                    self.deleteMessage(
+                        self.idanonkvas, updates["channel_post"]["reply_to_message"]["message_id"])
+                self.msgid_ignore = updates["channel_post"]["message_id"]
 
             sleep(0.3)
 
